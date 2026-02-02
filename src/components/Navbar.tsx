@@ -3,62 +3,76 @@ import Image from "next/image";
 
 export default function Navbar() {
   return (
-    <header className="fixed top-0 z-50 w-full border-b border-slate-200 bg-white/80 backdrop-blur-md dark:border-slate-800 dark:bg-slate-950/80">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-2">
-          <span className="text-xl font-bold tracking-tight text-slate-900 dark:text-white">
-            INLAW<span className="text-blue-600">.KZ</span>
-          </span>
+    <header className="fixed top-0 z-50 w-full border-b border-slate-200 bg-white/90 backdrop-blur-md dark:border-slate-800 dark:bg-slate-950/90 shadow-sm transition-all duration-300">
+      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        {/* Logo & Company Name */}
+        <Link href="/" className="flex items-center gap-3 group">
+          <div className="relative h-12 w-12 flex-shrink-0 transition-transform duration-300 group-hover:scale-105">
+            <Image
+              src="/logo.png"
+              alt="INLAW Logo"
+              fill
+              className="object-contain"
+              priority
+            />
+          </div>
+          <div className="flex flex-col">
+            <span className="text-xs font-medium text-slate-500 uppercase tracking-wider leading-none mb-1">
+              Company Service Provider
+            </span>
+            <span className="text-lg font-bold tracking-tight text-slate-900 dark:text-white leading-none group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors">
+              INLAW inc LTD.
+            </span>
+          </div>
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden lg:flex items-center gap-8">
           <Link
             href="/"
-            className="text-sm font-medium text-slate-700 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 transition-colors"
+            className="text-sm font-medium text-slate-700 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-blue-600 after:transition-all hover:after:w-full"
           >
             Главная
           </Link>
           <Link
             href="/about"
-            className="text-sm font-medium text-slate-700 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 transition-colors"
+            className="text-sm font-medium text-slate-700 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-blue-600 after:transition-all hover:after:w-full"
           >
             О компании
           </Link>
           <Link
             href="/services"
-            className="text-sm font-medium text-slate-700 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 transition-colors"
+            className="text-sm font-medium text-slate-700 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-blue-600 after:transition-all hover:after:w-full"
           >
             Услуги
           </Link>
           <Link
             href="/contacts"
-            className="text-sm font-medium text-slate-700 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 transition-colors"
+            className="text-sm font-medium text-slate-700 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-blue-600 after:transition-all hover:after:w-full"
           >
             Контакты
           </Link>
         </nav>
 
         {/* CTA Button */}
-        <div className="hidden md:flex">
+        <div className="hidden md:flex items-center gap-4">
           <Link
             href="/consultation"
-            className="rounded-full bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-slate-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900 dark:bg-blue-600 dark:hover:bg-blue-500 transition-all"
+            className="rounded-full bg-blue-700 px-6 py-2.5 text-sm font-semibold text-white shadow-md hover:bg-blue-600 hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 transition-all transform hover:-translate-y-0.5"
           >
             Связаться с нами
           </Link>
         </div>
 
-        {/* Mobile Menu Button (Placeholder) */}
-        <div className="flex md:hidden">
+        {/* Mobile Menu Button */}
+        <div className="flex lg:hidden">
           <button
             type="button"
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-slate-700 dark:text-slate-200"
+            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
           >
             <span className="sr-only">Open main menu</span>
             <svg
-              className="h-6 w-6"
+              className="h-7 w-7"
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth="1.5"
