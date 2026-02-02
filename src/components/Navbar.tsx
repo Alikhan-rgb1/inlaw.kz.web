@@ -20,7 +20,7 @@ export default function Navbar() {
             <span className="text-xs font-medium text-slate-500 uppercase tracking-wider leading-none mb-1">
               Company Service Provider
             </span>
-            <span className="text-lg font-bold tracking-tight text-slate-900 dark:text-white leading-none group-hover:text-blue-700 dark:group-hover:text-blue-400 transition-colors">
+            <span className="text-lg font-bold tracking-tight text-slate-900 dark:text-white leading-none group-hover:text-[#2E447A] dark:group-hover:text-blue-400 transition-colors">
               INLAW inc LTD.
             </span>
           </div>
@@ -30,25 +30,25 @@ export default function Navbar() {
         <nav className="hidden lg:flex items-center gap-8">
           <Link
             href="/"
-            className="text-sm font-medium text-slate-700 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-blue-600 after:transition-all hover:after:w-full"
+            className="text-sm font-medium text-slate-700 hover:text-[#2E447A] dark:text-slate-300 dark:hover:text-blue-400 transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-[#2E447A] after:transition-all hover:after:w-full"
           >
             Главная
           </Link>
           <Link
             href="/about"
-            className="text-sm font-medium text-slate-700 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-blue-600 after:transition-all hover:after:w-full"
+            className="text-sm font-medium text-slate-700 hover:text-[#2E447A] dark:text-slate-300 dark:hover:text-blue-400 transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-[#2E447A] after:transition-all hover:after:w-full"
           >
             О компании
           </Link>
           <Link
             href="/services"
-            className="text-sm font-medium text-slate-700 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-blue-600 after:transition-all hover:after:w-full"
+            className="text-sm font-medium text-slate-700 hover:text-[#2E447A] dark:text-slate-300 dark:hover:text-blue-400 transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-[#2E447A] after:transition-all hover:after:w-full"
           >
             Услуги
           </Link>
           <Link
             href="/contacts"
-            className="text-sm font-medium text-slate-700 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-blue-600 after:transition-all hover:after:w-full"
+            className="text-sm font-medium text-slate-700 hover:text-[#2E447A] dark:text-slate-300 dark:hover:text-blue-400 transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-[#2E447A] after:transition-all hover:after:w-full"
           >
             Контакты
           </Link>
@@ -58,7 +58,7 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-4">
           <Link
             href="/consultation"
-            className="rounded-full bg-blue-700 px-6 py-2.5 text-sm font-semibold text-white shadow-md hover:bg-blue-600 hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-700 transition-all transform hover:-translate-y-0.5"
+            className="rounded-full bg-[#2E447A] px-6 py-2.5 text-sm font-semibold text-white shadow-md hover:bg-[#233560] hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2E447A] transition-all transform hover:-translate-y-0.5"
           >
             Связаться с нами
           </Link>

@@ -25,21 +25,10 @@ export default function Home() {
           </div>
 
           <div className="relative z-10 w-full max-w-7xl px-4 py-20 text-center sm:px-6 lg:px-8">
-            {/* Badge / Tag - Glassmorphism effect */}
-            <div className="mb-10 flex justify-center">
-              <span className="inline-flex items-center rounded-full bg-white/80 backdrop-blur-sm px-4 py-1.5 text-sm font-semibold text-blue-800 ring-1 ring-inset ring-blue-200 shadow-sm dark:bg-slate-900/80 dark:text-blue-300 dark:ring-blue-800 transition-transform hover:scale-105 cursor-default">
-                <span className="mr-2 flex h-2 w-2 relative">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
-                </span>
-                Лидеры юридического консалтинга
-              </span>
-            </div>
-
             {/* H1 (ОДИН, ЖЁСТКИЙ) */}
             <h1 className="mb-8 text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white sm:text-6xl md:text-7xl lg:text-8xl drop-shadow-sm">
               Юридическое сопровождение <br className="hidden md:block" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-blue-500 dark:from-blue-400 dark:to-blue-200">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2E447A] to-[#4a6bb5] dark:from-[#4a6bb5] dark:to-[#8faae0]">
                 бизнеса в Казахстане
               </span>
             </h1>
@@ -54,7 +43,7 @@ export default function Home() {
             <div className="flex flex-col items-center justify-center gap-5 sm:flex-row">
               <Link
                 href="/consultation"
-                className="group relative w-full sm:w-auto overflow-hidden rounded-full bg-blue-700 px-8 py-4 text-lg font-bold text-white shadow-xl transition-all hover:bg-blue-600 hover:shadow-2xl hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                className="group relative w-full sm:w-auto overflow-hidden rounded-full bg-[#2E447A] px-8 py-4 text-lg font-bold text-white shadow-xl transition-all hover:bg-[#233560] hover:shadow-2xl hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#2E447A] focus:ring-offset-2"
               >
                 <span className="relative z-10 flex items-center justify-center gap-2">
                   Получить консультацию
@@ -65,7 +54,7 @@ export default function Home() {
               </Link>
               <Link
                 href="/services"
-                className="group w-full sm:w-auto rounded-full bg-white/80 backdrop-blur-sm px-8 py-4 text-lg font-bold text-slate-800 shadow-lg ring-1 ring-slate-200 transition-all hover:bg-white hover:text-blue-700 hover:shadow-xl hover:-translate-y-1 dark:bg-slate-800/80 dark:text-white dark:ring-slate-700 dark:hover:bg-slate-800"
+                className="group w-full sm:w-auto rounded-full bg-white/80 backdrop-blur-sm px-8 py-4 text-lg font-bold text-slate-800 shadow-lg ring-1 ring-slate-200 transition-all hover:bg-white hover:text-[#2E447A] hover:shadow-xl hover:-translate-y-1 dark:bg-slate-800/80 dark:text-white dark:ring-slate-700 dark:hover:bg-slate-800"
               >
                 Наши услуги
               </Link>
