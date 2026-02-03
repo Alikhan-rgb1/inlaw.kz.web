@@ -47,21 +47,21 @@ export default function Navbar() {
 
   // Helper for dynamic text colors
   const getTextColorClass = () => {
-    if (scrolled) return "text-slate-700 dark:text-slate-300";
+    if (scrolled) return "text-slate-700";
     if (isDarkHero) return "text-white";
-    return "text-slate-700 dark:text-slate-300";
+    return "text-slate-700";
   };
 
   const getHoverColorClass = () => {
-    if (scrolled) return "hover:text-[#2E447A] dark:hover:text-blue-400";
+    if (scrolled) return "hover:text-[#2E447A]";
     if (isDarkHero) return "hover:text-blue-200";
-    return "hover:text-[#2E447A] dark:hover:text-blue-400";
+    return "hover:text-[#2E447A]";
   };
 
   const getLogoTitleColorClass = () => {
-    if (scrolled) return "text-slate-900 dark:text-white group-hover:text-[#2E447A] dark:group-hover:text-blue-400";
+    if (scrolled) return "text-slate-900 group-hover:text-[#2E447A]";
     if (isDarkHero) return "text-white group-hover:text-blue-200";
-    return "text-slate-900 dark:text-white group-hover:text-[#2E447A] dark:group-hover:text-blue-400";
+    return "text-slate-900 group-hover:text-[#2E447A]";
   };
 
   const getLogoSubtitleColorClass = () => {
@@ -74,7 +74,7 @@ export default function Navbar() {
     <header 
       className={`fixed top-0 z-50 w-full transition-all duration-300 ${
         scrolled 
-          ? "bg-white/90 backdrop-blur-md shadow-sm border-b border-slate-200 dark:bg-slate-950/90 dark:border-slate-800" 
+          ? "bg-white/90 backdrop-blur-md shadow-sm border-b border-slate-200" 
           : "bg-transparent border-b border-transparent"
       }`}
     >
@@ -117,7 +117,7 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-6">
           {/* Language Switcher */}
           <div className={`flex items-center gap-2 text-sm font-medium ${getTextColorClass()}`}>
-            <svg className={`h-5 w-5 ${isDarkHero && !scrolled ? "text-white" : "text-slate-700 dark:text-slate-200"}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className={`h-5 w-5 ${isDarkHero && !scrolled ? "text-white" : "text-slate-700"}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
             <div className="flex items-center gap-1">
@@ -178,7 +178,7 @@ export default function Navbar() {
             className={`-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 transition-colors ${
                 isDarkHero && !scrolled 
                 ? "text-white hover:bg-white/10" 
-                : "text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800"
+                : "text-slate-700 hover:bg-slate-100"
             }`}
           >
             <span className="sr-only">Open main menu</span>
@@ -202,7 +202,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden border-t border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950 shadow-xl overflow-hidden"
+            className="lg:hidden border-t border-slate-200 bg-white shadow-xl overflow-hidden"
           >
             <div className="space-y-1 px-4 py-6">
               {navLinks.map((link) => (
@@ -210,29 +210,29 @@ export default function Navbar() {
                   key={link.name}
                   href={link.href}
                   onClick={closeMenu}
-                  className="block rounded-lg px-3 py-3 text-base font-semibold leading-7 text-slate-900 hover:bg-slate-50 dark:text-white dark:hover:bg-slate-800"
+                  className="block rounded-lg px-3 py-3 text-base font-semibold leading-7 text-slate-900 hover:bg-slate-50"
                 >
                   {link.name}
                 </Link>
               ))}
-              <div className="mt-6 pt-6 border-t border-slate-100 dark:border-slate-800">
+              <div className="mt-6 pt-6 border-t border-slate-100">
                 {/* Mobile Language Switcher */}
                 <div className="flex items-center justify-center gap-4 mb-6">
                   <button 
                     onClick={() => { setLanguage('ru'); closeMenu(); }}
-                    className={`text-sm font-bold px-3 py-1 rounded-full transition-colors ${language === 'ru' ? 'bg-[#2E447A] text-white' : 'text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800'}`}
+                    className={`text-sm font-bold px-3 py-1 rounded-full transition-colors ${language === 'ru' ? 'bg-[#2E447A] text-white' : 'text-slate-600 bg-slate-100'}`}
                   >
                     RU
                   </button>
                   <button 
                     onClick={() => { setLanguage('en'); closeMenu(); }}
-                    className={`text-sm font-bold px-3 py-1 rounded-full transition-colors ${language === 'en' ? 'bg-[#2E447A] text-white' : 'text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800'}`}
+                    className={`text-sm font-bold px-3 py-1 rounded-full transition-colors ${language === 'en' ? 'bg-[#2E447A] text-white' : 'text-slate-600 bg-slate-100'}`}
                   >
                     EN
                   </button>
                   <button 
                     onClick={() => { setLanguage('chi'); closeMenu(); }}
-                    className={`text-sm font-bold px-3 py-1 rounded-full transition-colors ${language === 'chi' ? 'bg-[#2E447A] text-white' : 'text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800'}`}
+                    className={`text-sm font-bold px-3 py-1 rounded-full transition-colors ${language === 'chi' ? 'bg-[#2E447A] text-white' : 'text-slate-600 bg-slate-100'}`}
                   >
                     CHI
                   </button>

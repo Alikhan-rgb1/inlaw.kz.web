@@ -100,7 +100,7 @@ export default function ServicesPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-950 font-sans">
+    <div className="min-h-screen bg-white font-sans">
       <Navbar />
       
       <main className="w-full">
@@ -132,7 +132,7 @@ export default function ServicesPage() {
         </section>
 
         {/* 3️⃣ SERVICES GRID */}
-        <section className="relative w-full bg-white dark:bg-slate-950 py-24" id="services">
+        <section className="relative w-full bg-white py-24" id="services">
           <motion.div 
             initial="hidden"
             whileInView="visible"
@@ -141,11 +141,11 @@ export default function ServicesPage() {
             className="relative z-10 w-full max-w-7xl px-4 mx-auto sm:px-6 lg:px-8"
           >
             <div className="mx-auto max-w-4xl text-center mb-16">
-              <motion.h2 variants={fadeInUp} className="mb-6 text-3xl font-bold text-[#2E447A] dark:text-white sm:text-4xl">
+              <motion.h2 variants={fadeInUp} className="mb-6 text-3xl font-bold text-[#2E447A] sm:text-4xl">
                 {t.servicesPage.grid.title}
               </motion.h2>
               
-              <motion.p variants={fadeInUp} className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl mx-auto">
+              <motion.p variants={fadeInUp} className="text-lg text-slate-600 leading-relaxed max-w-3xl mx-auto">
                 {t.servicesPage.grid.subtitle}
               </motion.p>
             </div>
@@ -156,7 +156,7 @@ export default function ServicesPage() {
                   key={idx} 
                   variants={fadeInUp}
                   whileHover={{ y: -4 }}
-                  className="group flex flex-col rounded-lg bg-slate-50 p-8 border border-slate-200 hover:border-[#2E447A] hover:shadow-lg transition-all duration-300 dark:bg-slate-900 dark:border-slate-800 dark:hover:border-blue-500 relative"
+                  className="group flex flex-col rounded-lg bg-slate-50 p-8 border border-slate-200 hover:border-[#2E447A] hover:shadow-lg transition-all duration-300 relative"
                 >
                   <Link href={`/services/${service.slug}`} className="absolute inset-0 z-10" />
                   
@@ -164,13 +164,13 @@ export default function ServicesPage() {
                     {service.icon}
                   </div>
 
-                  <h3 className="mb-4 text-xl font-bold text-slate-900 group-hover:text-[#2E447A] transition-colors dark:text-white">
+                  <h3 className="mb-4 text-xl font-bold text-slate-900 group-hover:text-[#2E447A] transition-colors">
                     {service.title}
                   </h3>
                   
                   <ul className="space-y-3 flex-grow">
                     {service.items.map((item, i) => (
-                      <li key={i} className="flex items-start gap-3 text-slate-600 dark:text-slate-400 text-sm">
+                      <li key={i} className="flex items-start gap-3 text-slate-600 text-sm">
                         <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[#2E447A]"></span>
                         <span>{item}</span>
                       </li>
@@ -185,7 +185,7 @@ export default function ServicesPage() {
 
 
         {/* 5️⃣ WHY INLAW */}
-        <section className="relative w-full bg-slate-50 dark:bg-slate-900 py-20">
+        <section className="relative w-full bg-slate-50 py-20">
            <motion.div 
              initial="hidden"
              whileInView="visible"
@@ -193,7 +193,7 @@ export default function ServicesPage() {
              variants={staggerContainer}
              className="w-full max-w-7xl px-4 mx-auto sm:px-6 lg:px-8 text-center"
            >
-            <motion.h2 variants={fadeInUp} className="mb-12 text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">
+            <motion.h2 variants={fadeInUp} className="mb-12 text-3xl font-bold text-slate-900 sm:text-4xl">
               {t.servicesPage.whyUs.title}
             </motion.h2>
 
@@ -226,15 +226,15 @@ export default function ServicesPage() {
                   <motion.div 
                     key={idx} 
                     variants={fadeInUp}
-                    className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-lg border border-slate-100 dark:border-slate-700 hover:-translate-y-2 transition-transform duration-300"
+                    className="bg-white p-6 rounded-xl shadow-lg border border-slate-100 hover:-translate-y-2 transition-transform duration-300"
                   >
-                    <div className="mb-4 inline-flex items-center justify-center h-12 w-12 rounded-lg bg-blue-50 text-[#2E447A] dark:bg-slate-700 dark:text-blue-400">
+                    <div className="mb-4 inline-flex items-center justify-center h-12 w-12 rounded-lg bg-blue-50 text-[#2E447A]">
                       {icons[idx]}
                     </div>
-                    <h3 className="mb-3 text-lg font-bold text-slate-900 dark:text-white">
+                    <h3 className="mb-3 text-lg font-bold text-slate-900">
                       {item.title}
                     </h3>
-                    <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                    <p className="text-slate-600 text-sm leading-relaxed">
                       {item.desc}
                     </p>
                   </motion.div>
@@ -245,7 +245,7 @@ export default function ServicesPage() {
         </section>
 
         {/* 6️⃣ HOW WE WORK */}
-        <section className="relative w-full bg-slate-50 dark:bg-slate-900 py-20">
+        <section className="relative w-full bg-slate-50 py-20">
            <motion.div 
              initial="hidden"
              whileInView="visible"
@@ -253,7 +253,7 @@ export default function ServicesPage() {
              variants={staggerContainer}
              className="w-full max-w-7xl px-4 mx-auto sm:px-6 lg:px-8 text-center"
            >
-            <motion.h2 variants={fadeInUp} className="mb-16 text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">
+            <motion.h2 variants={fadeInUp} className="mb-16 text-3xl font-bold text-slate-900 sm:text-4xl">
               {t.servicesPage.process.title}
             </motion.h2>
 
@@ -268,15 +268,15 @@ export default function ServicesPage() {
 
               {t.servicesPage.process.steps.map((item, idx) => (
                 <motion.div key={idx} variants={fadeInUp} className="group relative z-10 flex flex-1 flex-col items-center">
-                  <div className="mb-6 flex h-24 w-24 items-center justify-center rounded-full bg-white shadow-lg transition-all group-hover:scale-110 group-hover:bg-[#2E447A] group-hover:text-white dark:bg-slate-800 border-4 border-slate-200 dark:border-slate-700 z-20">
-                    <span className="text-2xl font-bold text-[#2E447A] group-hover:text-white dark:text-blue-400">
+                  <div className="mb-6 flex h-24 w-24 items-center justify-center rounded-full bg-white shadow-lg transition-all group-hover:scale-110 group-hover:bg-[#2E447A] group-hover:text-white border-4 border-slate-200 z-20">
+                    <span className="text-2xl font-bold text-[#2E447A] group-hover:text-white">
                       {item.step}
                     </span>
                   </div>
-                  <h3 className="mb-2 text-xl font-bold text-slate-900 dark:text-white">
+                  <h3 className="mb-2 text-xl font-bold text-slate-900">
                     {item.title}
                   </h3>
-                  <p className="max-w-xs text-sm text-slate-600 dark:text-slate-400">
+                  <p className="max-w-xs text-sm text-slate-600">
                     {item.desc}
                   </p>
                 </motion.div>
@@ -286,7 +286,7 @@ export default function ServicesPage() {
         </section>
 
         {/* 7️⃣ FAQ */}
-        <section className="relative w-full bg-slate-50 dark:bg-slate-900 py-20">
+        <section className="relative w-full bg-slate-50 py-20">
            <motion.div 
              initial="hidden"
              whileInView="visible"
@@ -294,7 +294,7 @@ export default function ServicesPage() {
              variants={staggerContainer}
              className="w-full max-w-4xl px-4 mx-auto sm:px-6 lg:px-8"
            >
-            <motion.h2 variants={fadeInUp} className="mb-12 text-center text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">
+            <motion.h2 variants={fadeInUp} className="mb-12 text-center text-3xl font-bold text-slate-900 sm:text-4xl">
               {t.servicesPage.faq.title}
             </motion.h2>
 
@@ -303,17 +303,17 @@ export default function ServicesPage() {
                 <motion.details 
                   key={idx} 
                   variants={fadeInUp}
-                  className="group rounded-xl bg-white shadow-sm dark:bg-slate-800 border border-slate-200 dark:border-slate-700"
+                  className="group rounded-xl bg-white shadow-sm border border-slate-200"
                 >
-                  <summary className="flex cursor-pointer items-center justify-between p-6 font-medium text-slate-900 dark:text-white">
+                  <summary className="flex cursor-pointer items-center justify-between p-6 font-medium text-slate-900">
                     <span className="text-lg font-semibold">{item.q}</span>
-                    <span className="ml-4 flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-[#2E447A] transition-transform group-open:rotate-180 dark:bg-slate-700 dark:text-blue-400">
+                    <span className="ml-4 flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-[#2E447A] transition-transform group-open:rotate-180">
                       <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                       </svg>
                     </span>
                   </summary>
-                  <div className="border-t border-slate-100 px-6 pb-6 pt-4 text-slate-600 dark:border-slate-700 dark:text-slate-300">
+                  <div className="border-t border-slate-100 px-6 pb-6 pt-4 text-slate-600">
                     <p>{item.a}</p>
                   </div>
                 </motion.details>
