@@ -17,6 +17,8 @@ export const metadata: Metadata = {
   description: "Комплексное юридическое сопровождение бизнеса, регистрация компаний, лицензирование в МФЦА (AIFC), судебная защита и корпоративное право.",
 };
 
+import { Providers } from "@/providers/Providers";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -27,7 +29,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   );
