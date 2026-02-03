@@ -186,7 +186,7 @@ export default function HomeClient() {
 
               <motion.div variants={fadeInUp} className="relative h-[500px] w-full overflow-hidden rounded-2xl bg-slate-100 shadow-2xl dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
                 <Image
-                  src="/work.RAF"
+                  src="/work.jpg"
                   alt="Target Audience"
                   fill
                   className="object-cover"

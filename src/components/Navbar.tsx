@@ -216,6 +216,28 @@ export default function Navbar() {
                 </Link>
               ))}
               <div className="mt-6 pt-6 border-t border-slate-100 dark:border-slate-800">
+                {/* Mobile Language Switcher */}
+                <div className="flex items-center justify-center gap-4 mb-6">
+                  <button 
+                    onClick={() => { setLanguage('ru'); closeMenu(); }}
+                    className={`text-sm font-bold px-3 py-1 rounded-full transition-colors ${language === 'ru' ? 'bg-[#2E447A] text-white' : 'text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800'}`}
+                  >
+                    RU
+                  </button>
+                  <button 
+                    onClick={() => { setLanguage('en'); closeMenu(); }}
+                    className={`text-sm font-bold px-3 py-1 rounded-full transition-colors ${language === 'en' ? 'bg-[#2E447A] text-white' : 'text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800'}`}
+                  >
+                    EN
+                  </button>
+                  <button 
+                    onClick={() => { setLanguage('chi'); closeMenu(); }}
+                    className={`text-sm font-bold px-3 py-1 rounded-full transition-colors ${language === 'chi' ? 'bg-[#2E447A] text-white' : 'text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800'}`}
+                  >
+                    CHI
+                  </button>
+                </div>
+
                 <a
                   href="https://wa.me/77001466601"
                   target="_blank"
