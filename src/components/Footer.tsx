@@ -20,18 +20,21 @@ const Footer = () => {
               </div>
               <div className="flex flex-col">
                 <span className="text-xs font-medium text-slate-500 uppercase tracking-wider leading-none mb-1">
-                  Company Service Provider
+                  Юридическая фирма
                 </span>
                 <span className="text-lg font-bold tracking-tight text-white leading-none">
-                  INLAW inc LTD.
+                  INLAW.KZ
                 </span>
               </div>
             </Link>
-           <div className="border-t border-slate-900 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-slate-500">
-            © {new Date().getFullYear()} INLAW inc LTD. Все права защищены.
-          </p>
-        </div>
+            <p className="text-sm text-slate-400 leading-relaxed max-w-xs">
+              Комплексное юридическое сопровождение бизнеса в Казахстане и МФЦА.
+            </p>
+            <div className="pt-4 flex flex-col md:flex-row justify-between items-center gap-4">
+              <p className="text-sm text-slate-500">
+                © {new Date().getFullYear()} INLAW.KZ. Все права защищены.
+              </p>
+            </div>
           </div>
 
           {/* 2. Services */}
@@ -50,9 +53,9 @@ const Footer = () => {
           <div>
             <h3 className="text-white font-bold text-lg mb-4">Компания</h3>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/about" className="hover:text-blue-400 transition-colors">О нас</Link></li>
-              <li><Link href="/team" className="hover:text-blue-400 transition-colors">Команда</Link></li>
-              <li><Link href="/contacts" className="hover:text-blue-400 transition-colors">Контакты</Link></li>
+              <li><Link href="/#about" className="hover:text-blue-400 transition-colors">О нас</Link></li>
+              <li><Link href="/services" className="hover:text-blue-400 transition-colors">Услуги</Link></li>
+              <li><Link href="/#cta" className="hover:text-blue-400 transition-colors">Контакты</Link></li>
               <li><Link href="/privacy" className="hover:text-blue-400 transition-colors">Политика конфиденциальности</Link></li>
             </ul>
           </div>

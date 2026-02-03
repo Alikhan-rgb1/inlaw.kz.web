@@ -1,12 +1,53 @@
+"use client";
+
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  // Handle scroll effect for transparency/blur
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [mobileMenuOpen]);
+
+  // Close menu when clicking a link
+  const closeMenu = () => setMobileMenuOpen(false);
+
+  const navLinks = [
+    { name: "Главная", href: "/" },
+    { name: "О компании", href: "/#about" },
+    { name: "Услуги", href: "/services" },
+    { name: "Контакты", href: "/#cta" },
+  ];
+
   return (
-    <header className="fixed top-0 z-50 w-full border-b border-slate-200 bg-white/90 backdrop-blur-md dark:border-slate-800 dark:bg-slate-950/90 shadow-sm transition-all duration-300">
+    <header 
+      className={`fixed top-0 z-50 w-full transition-all duration-300 ${
+        scrolled 
+          ? "bg-white/90 backdrop-blur-md shadow-sm border-b border-slate-200 dark:bg-slate-950/90 dark:border-slate-800" 
+          : "bg-transparent border-b border-transparent"
+      }`}
+    >
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo & Company Name */}
-        <Link href="/" className="flex items-center gap-3 group">
+        <Link href="/" className="flex items-center gap-3 group" onClick={closeMenu}>
           <div className="relative h-12 w-12 flex-shrink-0 transition-transform duration-300 group-hover:scale-105">
             <Image
               src="/logo.png"
@@ -18,40 +59,25 @@ export default function Navbar() {
           </div>
           <div className="flex flex-col">
             <span className="text-xs font-medium text-slate-500 uppercase tracking-wider leading-none mb-1">
-              Company Service Provider
+              Юридическая фирма
             </span>
             <span className="text-lg font-bold tracking-tight text-slate-900 dark:text-white leading-none group-hover:text-[#2E447A] dark:group-hover:text-blue-400 transition-colors">
-              INLAW inc LTD.
+              INLAW.KZ
             </span>
           </div>
         </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-8">
-          <Link
-            href="/"
-            className="text-sm font-medium text-slate-700 hover:text-[#2E447A] dark:text-slate-300 dark:hover:text-blue-400 transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-[#2E447A] after:transition-all hover:after:w-full"
-          >
-            Главная
-          </Link>
-          <Link
-            href="/about"
-            className="text-sm font-medium text-slate-700 hover:text-[#2E447A] dark:text-slate-300 dark:hover:text-blue-400 transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-[#2E447A] after:transition-all hover:after:w-full"
-          >
-            О компании
-          </Link>
-          <Link
-            href="/services"
-            className="text-sm font-medium text-slate-700 hover:text-[#2E447A] dark:text-slate-300 dark:hover:text-blue-400 transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-[#2E447A] after:transition-all hover:after:w-full"
-          >
-            Услуги
-          </Link>
-          <Link
-            href="/contacts"
-            className="text-sm font-medium text-slate-700 hover:text-[#2E447A] dark:text-slate-300 dark:hover:text-blue-400 transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-[#2E447A] after:transition-all hover:after:w-full"
-          >
-            Контакты
-          </Link>
+          {navLinks.map((link) => (
+            <Link
+              key={link.name}
+              href={link.href}
+              className="text-sm font-medium text-slate-700 hover:text-[#2E447A] dark:text-slate-300 dark:hover:text-blue-400 transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-[#2E447A] after:transition-all hover:after:w-full"
+            >
+              {link.name}
+            </Link>
+          ))}
         </nav>
 
         {/* CTA Button */}
@@ -70,26 +96,57 @@ export default function Navbar() {
         <div className="flex lg:hidden">
           <button
             type="button"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
           >
             <span className="sr-only">Open main menu</span>
-            <svg
-              className="h-7 w-7"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-              aria-hidden="true"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-              />
-            </svg>
+            {mobileMenuOpen ? (
+              <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg className="h-7 w-7" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              </svg>
+            )}
           </button>
         </div>
       </div>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="lg:hidden border-t border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950 shadow-xl overflow-hidden"
+          >
+            <div className="space-y-1 px-4 py-6">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  onClick={closeMenu}
+                  className="block rounded-lg px-3 py-3 text-base font-semibold leading-7 text-slate-900 hover:bg-slate-50 dark:text-white dark:hover:bg-slate-800"
+                >
+                  {link.name}
+                </Link>
+              ))}
+              <div className="mt-6 pt-6 border-t border-slate-100 dark:border-slate-800">
+                <a
+                  href="https://wa.me/77001466601"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex w-full items-center justify-center rounded-lg bg-[#2E447A] px-3 py-3 text-base font-semibold text-white shadow-sm hover:bg-[#233560]"
+                >
+                  Связаться в WhatsApp
+                </a>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

@@ -102,7 +102,7 @@ export default function HomeClient() {
         </section>
 
         {/* 2️⃣ ABOUT / WHO WE ARE */}
-        <section className="relative flex min-h-screen w-full items-center justify-center bg-slate-50 dark:bg-slate-900 pt-20 overflow-hidden">
+        <section id="about" className="relative flex min-h-screen w-full items-center justify-center bg-slate-50 dark:bg-slate-900 pt-20 overflow-hidden">
           {/* Background Pattern */}
           <div className="absolute inset-0 opacity-[0.03] dark:opacity-[0.05]" 
                style={{ backgroundImage: 'radial-gradient(#2E447A 1px, transparent 1px)', backgroundSize: '32px 32px' }}>
