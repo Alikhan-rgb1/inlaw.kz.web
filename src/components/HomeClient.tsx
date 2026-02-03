@@ -109,7 +109,7 @@ export default function HomeClient() {
         </section>
 
         {/* 2️⃣ ABOUT / WHO WE ARE */}
-        <section id="about" className="relative flex min-h-screen w-full items-center justify-center bg-slate-50 pt-20 overflow-hidden">
+        <section id="about" className="relative flex min-h-screen w-full items-center justify-center bg-slate-50 py-20 overflow-hidden">
           {/* Background Pattern */}
           <div className="absolute inset-0 opacity-[0.03]" 
                style={{ backgroundImage: 'radial-gradient(#2E447A 1px, transparent 1px)', backgroundSize: '32px 32px' }}>
@@ -244,7 +244,7 @@ export default function HomeClient() {
         </section>
 
         {/* 5️⃣ WHY INLAW */}
-        <section className="relative flex min-h-screen w-full items-center justify-center bg-white pt-20">
+        <section className="relative flex min-h-screen w-full items-center justify-center bg-white py-20">
            <motion.div 
              initial="hidden"
              whileInView="visible"
