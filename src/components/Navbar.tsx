@@ -42,7 +42,7 @@ export default function Navbar() {
     { name: t.navbar.home, href: "/" },
     { name: t.navbar.about, href: "/#about" },
     { name: t.navbar.services, href: "/services" },
-    { name: "IFZA Portal", href: "/ifza" },
+    { name: "Inlaw Portal", href: "/ifza" },
     { name: t.navbar.contacts, href: "/#cta" },
   ];
 
