@@ -54,14 +54,21 @@ export default function ApplicationDetails() {
 
   const updateStatus = async (newStatus: string) => {
     setUpdating(true)
+    
+    // Debug: check current user
+    const { data: { user } } = await supabase.auth.getUser()
+    console.log('Updating status as user:', user?.email)
+
     const { error } = await supabase
       .from('applications')
       .update({ status: newStatus })
       .eq('id', id)
 
     if (error) {
-      alert('Error updating status')
+      console.error('Error updating status:', error)
+      alert(`Error updating status: ${error.message}`)
     } else {
+      console.log('Status updated successfully to:', newStatus)
       setApplication({ ...application, status: newStatus })
     }
     setUpdating(false)

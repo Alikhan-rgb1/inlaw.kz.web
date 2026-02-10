@@ -102,7 +102,7 @@ export default function HomeClient() {
                 href="/ifza"
                 className="group w-full sm:w-auto flex items-center justify-center bg-white/80 backdrop-blur-sm px-8 py-4 text-lg font-bold text-slate-800 shadow-lg ring-1 ring-slate-200 transition-all hover:bg-white hover:text-[#2E447A] hover:shadow-xl hover:-translate-y-1"
               >
-                IFZA Portal
+                Inlaw Portal
               </Link>
             </motion.div>
           </motion.div>

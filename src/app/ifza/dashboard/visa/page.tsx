@@ -3,9 +3,11 @@
 import { useState } from 'react'
 import { createClient } from '@/utils/supabase/client'
 import { useLanguage } from '@/context/LanguageContext'
+import { useRouter } from 'next/navigation'
 
 export default function VisaApplicationPage() {
   const { t } = useLanguage()
+  const router = useRouter()
   const supabase = createClient()
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
@@ -104,7 +106,14 @@ export default function VisaApplicationPage() {
         </div>
         <h2 className="text-2xl font-bold text-green-800 mb-2">{t.ifza.appSubmitted}</h2>
         <p className="text-green-700">{t.ifza.visaSuccess}</p>
-        <button onClick={() => setSuccess(false)} className="mt-6 text-green-800 font-semibold hover:underline">{t.ifza.submitAnother}</button>
+        <div className="flex gap-4 justify-center mt-6">
+             <button onClick={() => router.push('/ifza/dashboard')} className="px-6 py-2 bg-[#2E447A] text-white font-semibold rounded-lg hover:bg-[#233560] transition-colors">
+                Go to Dashboard
+             </button>
+             <button onClick={() => setSuccess(false)} className="px-6 py-2 text-green-800 font-semibold hover:bg-green-100 rounded-lg transition-colors">
+                {t.ifza.submitAnother}
+             </button>
+        </div>
       </div>
     )
   }
