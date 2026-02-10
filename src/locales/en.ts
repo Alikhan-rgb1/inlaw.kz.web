@@ -364,6 +364,7 @@ export const en = {
     
     // Success
     appSubmitted: "Application Submitted!",
+    companySubmitted: "Application Submitted!",
     companySuccess: "Your company registration application has been received. We will review it and contact you shortly.",
     visaSuccess: "Your visa application has been received. We will review it and contact you shortly.",
     submitAnother: "Submit another application"

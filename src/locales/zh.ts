@@ -364,6 +364,7 @@ export const zh = {
     
     // Success
     appSubmitted: "申请已提交！",
+    companySubmitted: "申请已提交！",
     companySuccess: "您的公司注册申请已收到。我们将对其进行审核并尽快与您联系。",
     visaSuccess: "您的签证申请已收到。我们将对其进行审核并尽快与您联系。",
     submitAnother: "提交另一个申请"
