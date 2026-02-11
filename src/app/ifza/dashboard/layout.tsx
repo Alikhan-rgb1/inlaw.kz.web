@@ -60,9 +60,9 @@ export default function DashboardLayout({
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col md:flex-row">
+    <div className="min-h-screen bg-slate-50 flex flex-col md:flex-row h-screen overflow-hidden">
       {/* Sidebar */}
-      <aside className="w-full md:w-64 bg-white border-r border-slate-200 flex flex-col">
+      <aside className="w-full md:w-64 bg-white border-r border-slate-200 flex flex-col flex-shrink-0">
         <div className="p-6 border-b border-slate-200">
            <div className="flex items-center gap-3 mb-4">
                <div className="relative h-10 w-10 flex-shrink-0">
