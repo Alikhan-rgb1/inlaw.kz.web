@@ -117,6 +117,8 @@ export default function AuthPage() {
                   />
                 </div>
               </div>
+            )}
+            {view === 'sign-up' && (
               <div className="mt-4">
                   <label htmlFor="phone" className="block text-sm font-medium text-slate-700">
                     {t.ifza.phone}
