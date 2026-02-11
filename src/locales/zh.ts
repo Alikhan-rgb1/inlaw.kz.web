@@ -252,6 +252,7 @@ export const zh = {
     visaApp: "签证申请",
     dashboard: "仪表板",
     adminPanel: "管理面板",
+    myApplications: "我的申请",
     signOut: "登出",
     signedInAs: "登录身份",
     welcome: "欢迎来到 INLAW 门户",

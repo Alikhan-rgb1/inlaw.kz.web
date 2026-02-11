@@ -252,6 +252,7 @@ export const en = {
     visaApp: "Visa Application",
     dashboard: "Dashboard",
     adminPanel: "Admin Panel",
+    myApplications: "My Applications",
     signOut: "Sign out",
     signedInAs: "Signed in as",
     welcome: "Welcome to INLAW Portal",

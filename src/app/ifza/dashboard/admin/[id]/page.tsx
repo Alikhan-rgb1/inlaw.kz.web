@@ -77,7 +77,7 @@ export default function ApplicationDetails() {
   if (loading) return <div className="p-8">Loading...</div>
   if (!application) return <div className="p-8">Application not found</div>
 
-  const { data } = application
+  const { data, user_info } = application
 
   // Define field order for Company Registration
   const companySections = [
@@ -141,6 +141,34 @@ export default function ApplicationDetails() {
       </div>
 
       <div className="bg-white shadow overflow-hidden sm:rounded-lg mb-6 border border-slate-200">
+        {/* User Registration Info Block */}
+        <div className="px-4 py-5 sm:px-6 bg-blue-50 border-b border-blue-100">
+            <h3 className="text-lg leading-6 font-medium text-slate-900">User Registration Info</h3>
+            <p className="mt-1 text-sm text-slate-500">Information provided during account registration.</p>
+        </div>
+        <div className="border-b border-gray-200 px-4 py-5 sm:p-0">
+             <dl className="sm:divide-y sm:divide-gray-200">
+                <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 hover:bg-gray-50 transition-colors">
+                    <dt className="text-sm font-medium text-gray-500">Full Name</dt>
+                    <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                        {user_info ? `${user_info.first_name || ''} ${user_info.last_name || ''}` : 'N/A'}
+                    </dd>
+                </div>
+                <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 hover:bg-gray-50 transition-colors">
+                    <dt className="text-sm font-medium text-gray-500">Email</dt>
+                    <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                        {user_info?.email || 'N/A'}
+                    </dd>
+                </div>
+                 <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 hover:bg-gray-50 transition-colors">
+                    <dt className="text-sm font-medium text-gray-500">Phone</dt>
+                    <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                        {user_info?.phone || 'N/A'}
+                    </dd>
+                </div>
+             </dl>
+        </div>
+
         <div className="px-4 py-5 sm:px-6 flex justify-between items-center bg-slate-50 border-b border-slate-200">
           <div>
             <h3 className="text-lg leading-6 font-medium text-gray-900">Application Details</h3>

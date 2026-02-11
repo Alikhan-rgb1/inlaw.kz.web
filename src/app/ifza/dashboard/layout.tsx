@@ -63,11 +63,35 @@ export default function DashboardLayout({
     <div className="min-h-screen bg-slate-50 flex flex-col md:flex-row">
       {/* Sidebar */}
       <aside className="w-full md:w-64 bg-white border-r border-slate-200 flex flex-col">
-        <div className="p-6 border-b border-slate-200 flex items-center gap-3">
-           <div className="relative h-10 w-10 flex-shrink-0">
-             <Image src="/logo.png" alt="INLAW Logo" fill className="object-contain" />
+        <div className="p-6 border-b border-slate-200">
+           <div className="flex items-center gap-3 mb-4">
+               <div className="relative h-10 w-10 flex-shrink-0">
+                 <Image src="/logo.png" alt="INLAW Logo" fill className="object-contain" />
+               </div>
+               <span className="font-bold text-slate-900 text-lg leading-tight">INLAW<br/><span className="text-xs text-[#2E447A] font-normal">Portal</span></span>
            </div>
-           <span className="font-bold text-slate-900 text-lg leading-tight">INLAW<br/><span className="text-xs text-[#2E447A] font-normal">Portal</span></span>
+           
+           {/* Language Switcher moved here */}
+           <div className="flex justify-center gap-2">
+              <button 
+                onClick={() => setLanguage('ru')}
+                className={`text-xs font-bold px-2 py-1 rounded transition-colors ${language === 'ru' ? 'bg-[#2E447A] text-white' : 'text-slate-600 bg-slate-100 hover:bg-slate-200'}`}
+              >
+                RU
+              </button>
+              <button 
+                onClick={() => setLanguage('en')}
+                className={`text-xs font-bold px-2 py-1 rounded transition-colors ${language === 'en' ? 'bg-[#2E447A] text-white' : 'text-slate-600 bg-slate-100 hover:bg-slate-200'}`}
+              >
+                EN
+              </button>
+              <button 
+                onClick={() => setLanguage('chi')}
+                className={`text-xs font-bold px-2 py-1 rounded transition-colors ${language === 'chi' ? 'bg-[#2E447A] text-white' : 'text-slate-600 bg-slate-100 hover:bg-slate-200'}`}
+              >
+                CHI
+              </button>
+           </div>
         </div>
         
         <nav className="p-4 space-y-1 flex-grow">
@@ -90,28 +114,6 @@ export default function DashboardLayout({
         </nav>
 
         <div className="p-4 border-t border-slate-200">
-           {/* Language Switcher */}
-           <div className="flex items-center justify-center gap-2 mb-4">
-              <button 
-                onClick={() => setLanguage('ru')}
-                className={`text-xs font-bold px-2 py-1 rounded transition-colors ${language === 'ru' ? 'bg-[#2E447A] text-white' : 'text-slate-600 bg-slate-100 hover:bg-slate-200'}`}
-              >
-                RU
-              </button>
-              <button 
-                onClick={() => setLanguage('en')}
-                className={`text-xs font-bold px-2 py-1 rounded transition-colors ${language === 'en' ? 'bg-[#2E447A] text-white' : 'text-slate-600 bg-slate-100 hover:bg-slate-200'}`}
-              >
-                EN
-              </button>
-              <button 
-                onClick={() => setLanguage('chi')}
-                className={`text-xs font-bold px-2 py-1 rounded transition-colors ${language === 'chi' ? 'bg-[#2E447A] text-white' : 'text-slate-600 bg-slate-100 hover:bg-slate-200'}`}
-              >
-                CHI
-              </button>
-           </div>
-
           <div className="px-4 py-2 mb-2">
              <p className="text-xs text-slate-500">{t.ifza.signedInAs}</p>
              <p className="text-sm font-medium text-slate-900 truncate">{userEmail}</p>

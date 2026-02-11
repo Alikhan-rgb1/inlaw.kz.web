@@ -12,6 +12,7 @@ export default function AuthPage() {
   const { t } = useLanguage()
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
+  const [phone, setPhone] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [view, setView] = useState<'sign-in' | 'sign-up'>('sign-in')
@@ -35,6 +36,7 @@ export default function AuthPage() {
             data: {
               first_name: firstName,
               last_name: lastName,
+              phone: phone,
             },
           },
         })
@@ -114,6 +116,21 @@ export default function AuthPage() {
                     placeholder={t.ifza.lastName}
                   />
                 </div>
+              </div>
+              <div className="mt-4">
+                  <label htmlFor="phone" className="block text-sm font-medium text-slate-700">
+                    {t.ifza.phone}
+                  </label>
+                  <input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    required
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    className="relative block w-full appearance-none rounded-xl border border-slate-300 px-3 py-3 text-slate-900 placeholder-slate-500 focus:z-10 focus:border-[#2E447A] focus:outline-none focus:ring-1 focus:ring-[#2E447A] sm:text-sm mt-1"
+                    placeholder="+7 (777) 123-45-67"
+                  />
               </div>
             )}
             <div>

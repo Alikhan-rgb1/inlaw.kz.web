@@ -252,6 +252,7 @@ export const ru = {
     visaApp: "Визовая поддержка",
     dashboard: "Панель управления",
     adminPanel: "Админ панель",
+    myApplications: "Мои заявки",
     signOut: "Выйти",
     signedInAs: "Вы вошли как",
     welcome: "Добро пожаловать в INLAW Portal",
