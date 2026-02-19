@@ -368,6 +368,27 @@ export const zh = {
     companySubmitted: "申请已提交！",
     companySuccess: "您的公司注册申请已收到。我们将对其进行审核并尽快与您联系。",
     visaSuccess: "您的签证申请已收到。我们将对其进行审核并尽快与您联系。",
-    submitAnother: "提交另一个申请"
+    submitAnother: "提交另一个申请",
+
+    adminLoading: "正在加载管理面板...",
+    adminDashboardTitle: "管理面板",
+    adminNoApplications: "暂无申请。",
+    adminApplicantLabel: "申请人",
+    adminSubmittedOnLabel: "提交日期",
+    adminBackToDashboard: "返回管理面板",
+    adminUserInfoTitle: "账户注册信息",
+    adminUserInfoDesc: "在注册账户时填写的信息。",
+    adminDetailsTitle: "申请详情",
+    adminApproveButton: "批准",
+    adminRejectButton: "拒绝",
+    adminAttachedFilesTitle: "附件文件",
+    adminAttachedFilesDesc: "随此申请上传的文件。",
+    adminNoFiles: "没有附件文件。",
+    adminDownloadView: "下载 / 查看",
+    adminStatusApproved: "已批准",
+    adminStatusRejected: "已拒绝",
+    adminStatusPending: "待处理",
+    adminIdLabel: "ID",
+    adminCreatedLabel: "创建时间"
   }
 };

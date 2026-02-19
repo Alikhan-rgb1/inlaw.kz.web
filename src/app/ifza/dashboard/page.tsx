@@ -9,6 +9,7 @@ export default function DashboardPage() {
   const { t } = useLanguage()
   const [applications, setApplications] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
+  const [deletingId, setDeletingId] = useState<string | null>(null)
   const supabase = createClient()
 
   const fetchUserApplications = async () => {
@@ -54,11 +55,35 @@ export default function DashboardPage() {
   }
 
   const getStatusText = (status: string) => {
-    // You can add translations for these later
     switch (status) {
         case 'approved': return 'Approved'
         case 'rejected': return 'Rejected'
         default: return 'Pending'
+    }
+  }
+
+  const handleDelete = async (id: string) => {
+    const confirmed = window.confirm('Удалить эту заявку?')
+    if (!confirmed) return
+    setDeletingId(id)
+    try {
+      const { error } = await supabase
+        .from('applications')
+        .delete()
+        .eq('id', id)
+
+      if (error) {
+        console.error('Error deleting application:', error)
+        window.alert('Ошибка при удалении заявки. Попробуйте ещё раз.')
+        return
+      }
+
+      setApplications((prev) => prev.filter((app) => app.id !== id))
+    } catch (err) {
+      console.error('Unexpected error while deleting application:', err)
+      window.alert('Неожиданная ошибка при удалении заявки.')
+    } finally {
+      setDeletingId(null)
     }
   }
 
@@ -124,6 +149,57 @@ export default function DashboardPage() {
                             <span className="text-sm font-medium text-slate-700 capitalize">
                                 {getStatusText(app.status)}
                             </span>
+                            {app.status === 'pending' && (
+                              <button
+                                type="button"
+                                onClick={() => handleDelete(app.id)}
+                                disabled={deletingId === app.id}
+                                className="ml-3 inline-flex items-center justify-center rounded-full p-2 text-slate-400 hover:text-red-600 hover:bg-red-50 disabled:opacity-50 disabled:cursor-not-allowed"
+                              >
+                                <svg
+                                  className="h-4 w-4"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                >
+                                  <path
+                                    d="M9 11V17"
+                                    stroke="currentColor"
+                                    strokeWidth="1.8"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                  />
+                                  <path
+                                    d="M15 11V17"
+                                    stroke="currentColor"
+                                    strokeWidth="1.8"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                  />
+                                  <path
+                                    d="M4 7H20"
+                                    stroke="currentColor"
+                                    strokeWidth="1.8"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                  />
+                                  <path
+                                    d="M6 7L7 19C7.05279 19.5789 7.30262 20.1254 7.70885 20.5316C8.11508 20.9379 8.66157 21.1877 9.2405 21.2405H14.7595C15.3384 21.1877 15.8849 20.9379 16.2911 20.5316C16.6974 20.1254 16.9472 19.5789 17 19L18 7"
+                                    stroke="currentColor"
+                                    strokeWidth="1.8"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                  />
+                                  <path
+                                    d="M10 7V5C10 4.73478 10.1054 4.48043 10.2929 4.29289C10.4804 4.10536 10.7348 4 11 4H13C13.2652 4 13.5196 4.10536 13.7071 4.29289C13.8946 4.48043 14 4.73478 14 5V7"
+                                    stroke="currentColor"
+                                    strokeWidth="1.8"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                  />
+                                </svg>
+                              </button>
+                            )}
                         </div>
                     </div>
                 ))}

@@ -368,6 +368,27 @@ export const en = {
     companySubmitted: "Application Submitted!",
     companySuccess: "Your company registration application has been received. We will review it and contact you shortly.",
     visaSuccess: "Your visa application has been received. We will review it and contact you shortly.",
-    submitAnother: "Submit another application"
+    submitAnother: "Submit another application",
+
+    adminLoading: "Loading admin panel...",
+    adminDashboardTitle: "Admin Dashboard",
+    adminNoApplications: "No applications found.",
+    adminApplicantLabel: "Applicant",
+    adminSubmittedOnLabel: "Submitted on",
+    adminBackToDashboard: "Back to Admin Dashboard",
+    adminUserInfoTitle: "User Registration Info",
+    adminUserInfoDesc: "Information provided during account registration.",
+    adminDetailsTitle: "Application Details",
+    adminApproveButton: "Approve",
+    adminRejectButton: "Reject",
+    adminAttachedFilesTitle: "Attached Files",
+    adminAttachedFilesDesc: "Files uploaded with this application.",
+    adminNoFiles: "No files attached.",
+    adminDownloadView: "Download / View",
+    adminStatusApproved: "Approved",
+    adminStatusRejected: "Rejected",
+    adminStatusPending: "Pending",
+    adminIdLabel: "ID",
+    adminCreatedLabel: "Created"
   }
 };

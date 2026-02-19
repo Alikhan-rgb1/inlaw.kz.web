@@ -368,6 +368,27 @@ export const ru = {
     companySubmitted: "Заявка отправлена!",
     companySuccess: "Ваша заявка на регистрацию компании получена. Мы рассмотрим ее и свяжемся с вами в ближайшее время.",
     visaSuccess: "Ваша заявка на визу получена. Мы рассмотрим ее и свяжемся с вами в ближайшее время.",
-    submitAnother: "Отправить еще одну заявку"
+    submitAnother: "Отправить еще одну заявку",
+
+    adminLoading: "Загрузка админ-панели...",
+    adminDashboardTitle: "Админ-панель заявок",
+    adminNoApplications: "Заявок пока нет.",
+    adminApplicantLabel: "Заявитель",
+    adminSubmittedOnLabel: "Подана",
+    adminBackToDashboard: "Назад в админ-панель",
+    adminUserInfoTitle: "Данные аккаунта",
+    adminUserInfoDesc: "Информация, указанная при регистрации аккаунта.",
+    adminDetailsTitle: "Детали заявки",
+    adminApproveButton: "Одобрить",
+    adminRejectButton: "Отклонить",
+    adminAttachedFilesTitle: "Прикрепленные файлы",
+    adminAttachedFilesDesc: "Файлы, загруженные вместе с этой заявкой.",
+    adminNoFiles: "Файлы не прикреплены.",
+    adminDownloadView: "Скачать / Смотреть",
+    adminStatusApproved: "Одобрено",
+    adminStatusRejected: "Отклонено",
+    adminStatusPending: "В ожидании",
+    adminIdLabel: "ID",
+    adminCreatedLabel: "Создано"
   }
 };

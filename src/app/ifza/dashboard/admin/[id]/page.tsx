@@ -4,8 +4,10 @@ import { useEffect, useState } from 'react'
 import { createClient } from '@/utils/supabase/client'
 import Link from 'next/link'
 import { useRouter, useParams } from 'next/navigation'
+import { useLanguage } from '@/context/LanguageContext'
 
 export default function ApplicationDetails() {
+  const { t } = useLanguage()
   const [application, setApplication] = useState<any>(null)
   const [loading, setLoading] = useState(true)
   const [updating, setUpdating] = useState(false)
@@ -74,39 +76,101 @@ export default function ApplicationDetails() {
     setUpdating(false)
   }
 
-  if (loading) return <div className="p-8">Loading...</div>
+  if (loading) return <div className="p-8">{t.ifza.adminLoading}</div>
   if (!application) return <div className="p-8">Application not found</div>
 
   const { data, user_info } = application
 
+  const getStatusText = (status: string) => {
+    switch (status) {
+      case 'approved':
+        return t.ifza.adminStatusApproved
+      case 'rejected':
+        return t.ifza.adminStatusRejected
+      default:
+        return t.ifza.adminStatusPending
+    }
+  }
+
+  const fieldLabels: Record<string, string> = {
+    nameEng: t.ifza.nameEng,
+    nameRu: t.ifza.nameRu,
+    nameKz: t.ifza.nameKz,
+    legalType: t.ifza.legalType,
+    orgStructure: t.ifza.orgStructure,
+    ownership: t.ifza.ownershipForm,
+    international: t.ifza.internationalStatus,
+    mainActivity: t.ifza.mainActivity,
+    secondActivity: t.ifza.secondActivity,
+    thirdActivity: t.ifza.thirdActivity,
+    vatPayer: t.ifza.vatPayer,
+    totalCapital: t.ifza.totalCapital,
+    currency: t.ifza.currency,
+    shareClass: t.ifza.shareClass,
+    nominalValue: t.ifza.nominalValue,
+    totalShares: t.ifza.totalShares,
+    votesPerShare: t.ifza.votesPerShare,
+    shareDistribution: t.ifza.shareDistribution,
+    founderName: t.ifza.founderName,
+    founderContact: t.ifza.founderContact,
+    founderAddress: t.ifza.founderAddress,
+    founderId: t.ifza.founderId,
+    stateParticipation: t.ifza.stateParticipation,
+    uboInfo: t.ifza.uboInfo,
+    directorName: t.ifza.directorName,
+    directorContact: t.ifza.founderContact,
+    directorAddress: t.ifza.founderAddress,
+    secretaryName: t.ifza.secretaryName,
+    secretaryContact: t.ifza.founderContact,
+    secretaryAddress: t.ifza.founderAddress,
+    staffCount: t.ifza.staffCount,
+    legalAddress: t.ifza.legalAddress,
+    companyEmail: t.ifza.companyEmail,
+    fullName: t.ifza.fullName,
+    phone: t.ifza.phone,
+    email: t.ifza.email,
+    employeeName: t.ifza.employeeName,
+    maritalStatus: t.ifza.maritalStatus,
+    religion: t.ifza.religion,
+    religionNote: t.ifza.religionNote,
+    fatherName: t.ifza.fatherName,
+    motherName: t.ifza.motherName,
+    passportNumber: t.ifza.passportNumber,
+    nationality: t.ifza.nationality,
+    visaType: t.ifza.visaType,
+    position: t.ifza.position,
+    salary: t.ifza.salary,
+    location: t.ifza.currentLocation
+  }
+
   // Define field order for Company Registration
   const companySections = [
     {
-      title: "1. Identification of the Company",
+      title: t.ifza.companyId,
       fields: ["nameEng", "nameRu", "nameKz", "legalType", "orgStructure", "ownership", "international"]
     },
     {
-      title: "2. Economic Activity",
+      title: t.ifza.economicActivity,
       fields: ["mainActivity", "secondActivity", "thirdActivity", "vatPayer"]
     },
     {
-      title: "3. Share Capital",
+      title: t.ifza.shareCapital,
       fields: ["totalCapital", "currency", "shareClass", "nominalValue", "totalShares", "votesPerShare", "shareDistribution"]
     },
     {
-      title: "4. Founders",
+      title: t.ifza.foundersInfo,
       fields: ["founderName", "founderContact", "founderAddress", "founderId", "stateParticipation", "uboInfo"]
     },
     {
-      title: "5. Management",
+      title: t.ifza.management,
       fields: ["directorName", "directorContact", "directorAddress", "secretaryName", "secretaryContact", "secretaryAddress", "staffCount"]
     },
     {
-      title: "6. Contact Data",
+      title: t.ifza.contactData,
       fields: ["legalAddress", "companyEmail"]
     },
     {
-      title: "Applicant Info",
+      title: t.ifza.applicantInfo,
       fields: ["fullName", "phone", "email"]
     }
   ]
@@ -114,15 +178,15 @@ export default function ApplicationDetails() {
   // Define field order for Visa Application
   const visaSections = [
     {
-      title: "1. Personal Information",
+      title: t.ifza.visaPersonalInfo,
       fields: ["employeeName", "maritalStatus", "religion", "religionNote", "fatherName", "motherName", "passportNumber", "nationality", "visaType"]
     },
     {
-      title: "2. Employment Data",
+      title: t.ifza.employmentData,
       fields: ["position", "salary"]
     },
     {
-      title: "3. Status",
+      title: t.ifza.locationStatus,
       fields: ["location"]
     }
   ]
@@ -133,35 +197,35 @@ export default function ApplicationDetails() {
     <div className="max-w-5xl mx-auto pb-12">
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold text-slate-900">
-            {application.type === 'company' ? 'Company Registration' : 'Visa Application'}
+            {application.type === 'company' ? t.ifza.companyReg : t.ifza.visaApp}
         </h1>
         <Link href="/ifza/dashboard/admin" className="text-[#2E447A] hover:underline font-medium">
-          &larr; Back to Dashboard
+          &larr; {t.ifza.adminBackToDashboard}
         </Link>
       </div>
 
       <div className="bg-white shadow overflow-hidden sm:rounded-lg mb-6 border border-slate-200">
         {/* User Registration Info Block */}
         <div className="px-4 py-5 sm:px-6 bg-blue-50 border-b border-blue-100">
-            <h3 className="text-lg leading-6 font-medium text-slate-900">User Registration Info</h3>
-            <p className="mt-1 text-sm text-slate-500">Information provided during account registration.</p>
+            <h3 className="text-lg leading-6 font-medium text-slate-900">{t.ifza.adminUserInfoTitle}</h3>
+            <p className="mt-1 text-sm text-slate-500">{t.ifza.adminUserInfoDesc}</p>
         </div>
         <div className="border-b border-gray-200 px-4 py-5 sm:p-0">
              <dl className="sm:divide-y sm:divide-gray-200">
                 <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 hover:bg-gray-50 transition-colors">
-                    <dt className="text-sm font-medium text-gray-500">Full Name</dt>
+                    <dt className="text-sm font-medium text-gray-500">{t.ifza.fullName}</dt>
                     <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                         {user_info ? `${user_info.first_name || ''} ${user_info.last_name || ''}` : 'N/A'}
                     </dd>
                 </div>
                 <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 hover:bg-gray-50 transition-colors">
-                    <dt className="text-sm font-medium text-gray-500">Email</dt>
+                    <dt className="text-sm font-medium text-gray-500">{t.ifza.email}</dt>
                     <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                         {user_info?.email || 'N/A'}
                     </dd>
                 </div>
                  <div className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 hover:bg-gray-50 transition-colors">
-                    <dt className="text-sm font-medium text-gray-500">Phone</dt>
+                    <dt className="text-sm font-medium text-gray-500">{t.ifza.phone}</dt>
                     <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
                         {user_info?.phone || 'N/A'}
                     </dd>
@@ -171,9 +235,9 @@ export default function ApplicationDetails() {
 
         <div className="px-4 py-5 sm:px-6 flex justify-between items-center bg-slate-50 border-b border-slate-200">
           <div>
-            <h3 className="text-lg leading-6 font-medium text-gray-900">Application Details</h3>
+            <h3 className="text-lg leading-6 font-medium text-gray-900">{t.ifza.adminDetailsTitle}</h3>
             <p className="mt-1 max-w-2xl text-sm text-gray-500">
-              ID: {application.id} | Created: {new Date(application.created_at).toLocaleString()}
+              {t.ifza.adminIdLabel}: {application.id} | {t.ifza.adminCreatedLabel}: {new Date(application.created_at).toLocaleString()}
             </p>
           </div>
           <div className="flex items-center gap-4">
@@ -181,7 +245,7 @@ export default function ApplicationDetails() {
                 ${application.status === 'approved' ? 'bg-green-100 text-green-800' : 
                   application.status === 'rejected' ? 'bg-red-100 text-red-800' : 
                   'bg-yellow-100 text-yellow-800'}`}>
-                {application.status.toUpperCase()}
+                {getStatusText(application.status)}
               </span>
               <div className="flex gap-2">
                 <button 
@@ -189,14 +253,14 @@ export default function ApplicationDetails() {
                   disabled={updating}
                   className="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700 text-sm disabled:opacity-50 transition-colors"
                 >
-                  Approve
+                  {t.ifza.adminApproveButton}
                 </button>
                 <button 
                   onClick={() => updateStatus('rejected')}
                   disabled={updating}
                   className="bg-red-600 text-white px-3 py-1 rounded hover:bg-red-700 text-sm disabled:opacity-50 transition-colors"
                 >
-                  Reject
+                  {t.ifza.adminRejectButton}
                 </button>
               </div>
           </div>
@@ -214,7 +278,7 @@ export default function ApplicationDetails() {
                       return (
                         <div key={field} className="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 hover:bg-gray-50 transition-colors">
                           <dt className="text-sm font-medium text-gray-500 capitalize">
-                            {field.replace(/([A-Z])/g, ' $1').trim()}
+                            {fieldLabels[field] || field.replace(/([A-Z])/g, ' $1').trim()}
                           </dt>
                           <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 break-words">
                             {String(data[field])}
@@ -234,8 +298,8 @@ export default function ApplicationDetails() {
       {/* Files Section */}
       <div className="bg-white shadow overflow-hidden sm:rounded-lg border border-slate-200">
           <div className="px-4 py-5 sm:px-6 bg-slate-50 border-b border-slate-200">
-            <h3 className="text-lg leading-6 font-medium text-gray-900">Attached Files</h3>
-            <p className="mt-1 text-sm text-gray-500">Files uploaded with this application.</p>
+            <h3 className="text-lg leading-6 font-medium text-gray-900">{t.ifza.adminAttachedFilesTitle}</h3>
+            <p className="mt-1 text-sm text-gray-500">{t.ifza.adminAttachedFilesDesc}</p>
           </div>
           <div className="px-4 py-5 sm:px-6">
              {data.files && Object.keys(data.files).length > 0 ? (
@@ -250,14 +314,14 @@ export default function ApplicationDetails() {
                       </div>
                       <div className="ml-4 flex-shrink-0">
                         <a href={url as string} target="_blank" rel="noopener noreferrer" className="font-medium text-[#2E447A] hover:text-[#1a2e5e]">
-                          Download / View
+                          {t.ifza.adminDownloadView}
                         </a>
                       </div>
                     </li>
                   ))}
                 </ul>
              ) : (
-                <p className="text-sm text-gray-500 italic">No files attached.</p>
+                <p className="text-sm text-gray-500 italic">{t.ifza.adminNoFiles}</p>
              )}
           </div>
       </div>
