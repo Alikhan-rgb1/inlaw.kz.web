@@ -7,7 +7,15 @@ import { useEffect, useState } from 'react'
 
 export default function DashboardPage() {
   const { t } = useLanguage()
-  const [applications, setApplications] = useState<any[]>([])
+  interface Application {
+    id: string
+    type: 'company' | 'visa'
+    status: string
+    created_at: string
+    data: any
+  }
+
+  const [applications, setApplications] = useState<Application[]>([])
   const [loading, setLoading] = useState(true)
   const [deletingId, setDeletingId] = useState<string | null>(null)
   const supabase = createClient()
@@ -19,11 +27,10 @@ export default function DashboardPage() {
       
       if (!user) return
 
-      // Fetch all applications for this user
       const { data, error } = await supabase
         .from('applications')
         .select('*')
-        //.eq('user_id', user.id) // Commented out for debugging (shows all)
+        .eq('user_id', user.id)
         .order('created_at', { ascending: false })
       
       if (error) {
@@ -63,18 +70,27 @@ export default function DashboardPage() {
   }
 
   const handleDelete = async (id: string) => {
+    if (!id || id === 'undefined') {
+      window.alert('Некорректный ID заявки.')
+      return
+    }
+
     const confirmed = window.confirm('Удалить эту заявку?')
     if (!confirmed) return
     setDeletingId(id)
     try {
-      const { error } = await supabase
-        .from('applications')
-        .delete()
-        .eq('id', id)
+      const response = await fetch(`/api/applications/${id}`, {
+        method: 'DELETE',
+      })
 
-      if (error) {
-        console.error('Error deleting application:', error)
-        window.alert('Ошибка при удалении заявки. Попробуйте ещё раз.')
+      if (!response.ok) {
+        const data = await response.json().catch(() => null)
+        console.error('Error deleting application via API:', data)
+        window.alert(
+          `Ошибка при удалении заявки: ${
+            (data && (data.error || data.message)) || 'Попробуйте ещё раз.'
+          }`
+        )
         return
       }
 
