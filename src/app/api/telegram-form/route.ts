@@ -4,8 +4,8 @@ export async function POST(request: Request) {
   try {
     const { name, phone, question, utm } = await request.json();
 
-    if (!name || !phone || !question) {
-      return NextResponse.json({ error: 'Name, phone, and question are required.' }, { status: 400 });
+    if (!name || !phone) {
+      return NextResponse.json({ error: 'Name and phone are required.' }, { status: 400 });
     }
 
     const botToken = process.env.TELEGRAM_BOT_TOKEN;
@@ -16,7 +16,11 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Telegram bot not configured.' }, { status: 500 });
     }
 
-    let message = `Новая заявка с сайта:\n\nИмя: ${name}\nТелефон: ${phone}\nВопрос: ${question}`;
+    let message = `Новая заявка с сайта:\n\nИмя: ${name}\nТелефон: ${phone}`;
+    
+    if (question) {
+      message += `\nВопрос: ${question}`;
+    }
 
     if (Object.keys(utm).length > 0) {
       message += `\n\nUTM метки:\n`;

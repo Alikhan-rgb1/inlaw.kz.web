@@ -35,7 +35,7 @@ const teamImages = ["/Berik.jpeg", "/Marat.jpeg", "/Salamat_new.jpeg"];
 
 export default function HomeClient() {
   const { t } = useLanguage();
-  const [formState, setFormState] = useState({ name: "", phone: "", question: "" });
+  const [formState, setFormState] = useState({ name: "", phone: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [utmParams, setUtmParams] = useState<Record<string, string>>({});
@@ -67,7 +67,7 @@ export default function HomeClient() {
 
       if (response.ok) {
         setIsSuccess(true);
-        setFormState({ name: "", phone: "", question: "" });
+        setFormState({ name: "", phone: "" });
       } else {
         const errorData = await response.json();
         alert(`Ошибка при отправке формы: ${errorData.error || "Неизвестная ошибка"}`);
