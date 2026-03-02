@@ -22,11 +22,13 @@ export async function POST(request: Request) {
       message += `\nВопрос: ${question}`;
     }
 
-    if (Object.keys(utm).length > 0) {
-      message += `\n\nUTM метки:\n`;
+    if (utm && Object.keys(utm).length > 0) {
+      message += `\n\n<b>UTM Метки:</b>\n`;
       for (const key in utm) {
-        message += `${key}: ${utm[key]}\n`;
+        message += `<code>${key}</code>: ${utm[key]}\n`;
       }
+    } else {
+      message += `\n\n<i>UTM метки не найдены (прямой заход)</i>`;
     }
 
     const telegramApiUrl = `https://api.telegram.org/bot${botToken}/sendMessage`;

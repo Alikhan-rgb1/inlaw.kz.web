@@ -42,13 +42,30 @@ export default function HomeClient() {
   const searchParams = useSearchParams();
 
   useEffect(() => {
+    // Сохраняем UTM-метки в localStorage, чтобы они не терялись при переходах
     const params: Record<string, string> = {};
+    let hasUtm = false;
+    
     searchParams.forEach((value, key) => {
-      if (key.startsWith('utm_')) {
+      if (key.toLowerCase().startsWith('utm_') || key.toLowerCase() === 'gclid' || key.toLowerCase() === 'fbclid') {
         params[key] = value;
+        hasUtm = true;
       }
     });
-    setUtmParams(params);
+
+    if (hasUtm) {
+      localStorage.setItem('utm_params', JSON.stringify(params));
+      setUtmParams(params);
+    } else {
+      const savedUtm = localStorage.getItem('utm_params');
+      if (savedUtm) {
+        try {
+          setUtmParams(JSON.parse(savedUtm));
+        } catch (e) {
+          console.error('Error parsing saved UTM params', e);
+        }
+      }
+    }
   }, [searchParams]);
 
   const handleSubmit = async (e: React.FormEvent) => {
