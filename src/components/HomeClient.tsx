@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, Variants } from "framer-motion";
@@ -37,15 +38,48 @@ export default function HomeClient() {
   const [formState, setFormState] = useState({ name: "", phone: "", question: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [utmParams, setUtmParams] = useState<Record<string, string>>({});
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const params: Record<string, string> = {};
+    searchParams.forEach((value, key) => {
+      if (key.startsWith('utm_')) {
+        params[key] = value;
+      }
+    });
+    setUtmParams(params);
+  }, [searchParams]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setIsSubmitting(false);
-    setIsSuccess(true);
-    setFormState({ name: "", phone: "", question: "" });
+    setIsSuccess(false); // Reset success state on new submission
+
+    try {
+      const response = await fetch("/api/telegram-form", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ ...formState, utm: utmParams }),
+      });
+
+      if (response.ok) {
+        setIsSuccess(true);
+        setFormState({ name: "", phone: "", question: "" });
+      } else {
+        const errorData = await response.json();
+        alert(`Ошибка при отправке формы: ${errorData.error || "Неизвестная ошибка"}`);
+        setIsSuccess(false);
+      }
+    } catch (error) {
+      console.error("Ошибка при отправке формы:", error);
+      alert("Произошла ошибка при отправке формы. Попробуйте позже.");
+      setIsSuccess(false);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
